@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel del Director</title>
+   
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+        }
+
+        .logout {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #0066cc;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .navbar a.active, .navbar a:hover {
+            background-color: #004080;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h1 {
+            color: #004080;
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-button {
+            padding: 10px;
+            border: none;
+            background-color: #0066cc;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .user-table th, .user-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .user-table th {
+            background-color: #004080;
+            color: white;
+        }
+
+        .edit {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .delete {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .new-user {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .new-user:hover {
+            background-color: #0066cc;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: #004080;
+        }
+
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .modal-buttons button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-registrar {
+            background-color: #4CAF50;
+        }
+
+        .btn-cancelar {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Centro de Conciliación</div>
+        <div class="title">Panel del Director</div>
+        <button class="logout" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+
+    <nav class="navbar">
+        <a href="/inicio">Inicio</a>
+        <a href="/administrar-usuarios" class="active">Administrar Usuarios</a>
+        <a href="/generar-esquela">Generar Esquela</a>
+        <a href="/informe-trimestral">Informe Trimestral</a>
+    </nav>
+
+    <main>
+        <h1>Usuarios Creados</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar Usuario" oninput="buscarUsuario()">
+            <button class="search-button">🔍</button>
+        </div>
+
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombres</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>Juan Pérez</td>
+                    <td>2024-11-01</td>
+                    <td>
+                        <button class="edit" onclick="editarUsuario('Juan Pérez', 'juan@example.com')">Editar</button>
+                        <button class="delete" onclick="deleteRow(this)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="new-user" onclick="openModal()">Nuevo Usuario</button>
+
+        <!-- Modal -->
+        <div id="userModal" class="modal">
+            <div class="modal-content">
+                <h2>Registrar Nuevo Usuario</h2>
+                <form>
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" placeholder="Ingrese su nombre">
+
+                    <label for="dni">DNI o RUC</label>
+                    <input type="text" id="dni" placeholder="Ingrese su DNI o RUC">
+
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" placeholder="Ingrese su dirección">
+
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" placeholder="Ingrese su correo electrónico">
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" placeholder="Ingrese su teléfono">
+
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn-registrar">Registrar</button>
+                        <button type="button" class="btn-cancelar" onclick="closeModal()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function openModal() {
+            document.getElementById('userModal').style.display = 'flex';
+        }
+    
+        function closeModal() {
+            document.getElementById('userModal').style.display = 'none';
+        }
+
+        // Función de Cerrar Sesión
+        function cerrarSesion() {
+            // Aquí agregaríamos la lógica para cerrar sesión en el backend
+            alert('Sesión cerrada');
+            window.location.href = "/login"; // Redirigir al login
+        }
+
+        // Función para editar un usuario
+        function editarUsuario(nombre, email) {
+            document.getElementById('nombres').value = nombre;
+            document.getElementById('email').value = email;
+            openModal();
+        }
+
+        // Función para registra r un usuario y agregarlo a la tabla
+        document.querySelector('.btn-registrar').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+    
+            // Obtener valores del formulario
+            const nombres = document.getElementById('nombres').value.trim();
+            const dni = document.getElementById('dni').value.trim();
+            const direccion = document.getElementById('direccion').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = document.getElementById('telefono').value.trim();
+    
+            if (nombres && dni && direccion && email && telefono) {
+                // Obtener la tabla y crear una nueva fila
+                const table = document.querySelector('.user-table tbody');
+                const rowCount = table.rows.length + 1;
+    
+                const newRow = `
+                    <tr>
+                        <td>${rowCount < 10 ? '0' + rowCount : rowCount}</td>
+                        <td>${nombres}</td>
+                        <td>${new Date().toISOString().split('T')[0]}</td>
+                        <td>
+                            <button class="edit" onclick="editarUsuario('${nombres}', '${email}')">Editar</button>
+                            <button class="delete" onclick="deleteRow(this)">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+    
+                table.insertAdjacentHTML('beforeend', newRow);
+    
+                // Limpiar formulario y cerrar modal
+                document.querySelector('form').reset();
+                closeModal();
+            } else {
+                alert('Por favor complete todos los campos.');
+            }
+        });
+
+        // Función para eliminar una fila
+        function deleteRow(button) {
+            button.closest('tr').remove();
+        }
+
+        // Función para buscar usuarios en la tabla
+        function buscarUsuario() {
+            const input = document.getElementById('searchInput').value.toLowerCase(); // Obtener el valor ingresado y convertirlo a minúsculas
+            const rows = document.querySelectorAll('.user-table tbody tr'); // Seleccionar todas las filas de la tabla
+
+            rows.forEach(row => {
+                const nombre = row.querySelector('td:nth-child(2)').textContent.toLowerCase(); // Obtener el nombre de la segunda columna
+                if (nombre.includes(input)) {
+                    row.style.display = ''; // Mostrar fila si el nombre coincide
+                } else {
+                    row.style.display = 'none'; // Ocultar fila si el nombre no coincide
+                }
+            });
+        }
+    </script>
+</body>
+</html>

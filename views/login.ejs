@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Conciliación Gilmer</title>
+    <%- include('partials/Basicos.ejs') %>
+    <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="left-box">
+                <h1>Centro de Conciliación</h1>
+                <h2>GILMER</h2>
+                
+            </div>
+            <div class="right-box">
+                <h2>Iniciar Sesión</h2>
+                <form action="/login" method="POST">
+                    <label for="email">Email</label>
+                    <input  type="email" id="email" name="email" value="llacua@gmail.com" placeholder="Ingrese su Email" required>
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" value="123" placeholder="Ingrese su Contraseña" required>
+                    <button type="submit">Ingresar</button>
+                </form>
+                <% if(error){%>
+                <label style="color: red;"><%=error%></label>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

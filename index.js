@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
+
+// MENSAJE PRUEBA 2
 app.use(session({
     secret: 'melanio',
     resave: false,

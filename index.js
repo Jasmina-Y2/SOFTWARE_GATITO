@@ -6,7 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 
 
-// MENSAJE PRUEBA
+// MENSAJE PRUEBA 2
 app.use(session({
     secret: 'melanio',
     resave: false,

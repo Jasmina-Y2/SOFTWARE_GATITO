@@ -28,7 +28,7 @@
 <nav class="navbar navbar-dark bg-primary p-3">
     <div class="container-fluid">
         <%if(data.length > 1){%>
-            <h5>Hola <%=data_user.email%> !&nbsp;</h5>
+            <h5 style="color: white;" >Hola <%=data_user.email%> !&nbsp;</h5>
             <div class="btn-group" role="group" aria-label="Opciones del Panel">
                 <% data.forEach(e =>{ %>
                     <% if(currentRoute == "con" && e=="conciliador"){%>
@@ -45,7 +45,7 @@
         <%}else{%>
             <span class="navbar-brand mb-0 h1">Panel de Conciliador</span>
         <%}%>
-        <a href="/login" class="btn btn-danger">Cerrar Sesión</a>
+        <a href="/login"><button  class="btn btn-danger">Cerrar Sesión</button></a>
     </div>
 </nav>
 
@@ -60,97 +60,10 @@
 </ul>
 
 <!-- Contenedor principal -->
-<div class="container mt-4">
+<div class="container mt-1">
     <h2 class="text-primary">Generar Solicitud de Conciliación</h2>
-    
-    <!-- Botones -->
-    <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-success me-2">📝 Generar Doc.</button>
-        <button class="btn btn-danger">❌ Limpiar</button>
-    </div>
+    <%- include('formulario.ejs') %>
 
-    <!-- Datos del Solicitante -->
-    <div class="card mb-4">
-        <div class="card-header fw-bold bg-light">
-            Datos del Solicitante
-        </div>
-        <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="nombre" class="form-label">Nombre y apellidos / Denominación o razón social</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
-                </div>
-                <div class="col-md-6">
-                    <label for="ruc" class="form-label">Documento de identidad o RUC</label>
-                    <input type="text" class="form-control" id="ruc" placeholder="Ingrese RUC o DNI">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="domicilio" class="form-label">Domicilio real</label>
-                    <input type="text" class="form-control" id="domicilio" placeholder="Ingrese domicilio">
-                </div>
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingrese correo">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="telefono" class="form-label">Número telefónico</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="Ingrese teléfono">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Datos del Apoderado -->
-    <div class="card mb-4">
-        <div class="card-header fw-bold bg-light">
-            Datos del Apoderado o Representante
-        </div>
-        <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="apoderado" class="form-label">Nombre del apoderado</label>
-                    <input type="text" class="form-control" id="apoderado" placeholder="Ingrese nombre">
-                </div>
-                <div class="col-md-6">
-                    <label for="domicilioApoderado" class="form-label">Domicilio real</label>
-                    <input type="text" class="form-control" id="domicilioApoderado" placeholder="Ingrese domicilio">
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="emailApoderado" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="emailApoderado" placeholder="Ingrese correo">
-                </div>
-                <div class="col-md-6">
-                    <label for="telefonoApoderado" class="form-label">Número telefónico</label>
-                    <input type="tel" class="form-control" id="telefonoApoderado" placeholder="Ingrese teléfono">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Datos del Invitado -->
-    <div class="card mb-4">
-        <div class="card-header fw-bold bg-light">
-            Datos del Invitado
-        </div>
-        <div class="card-body">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="nombreInvitado" class="form-label">Nombre o razón social</label>
-                    <input type="text" class="form-control" id="nombreInvitado" placeholder="Ingrese nombre">
-                </div>
-                <div class="col-md-6">
-                    <label for="domicilioInvitado" class="form-label">Domicilio real</label>
-                    <input type="text" class="form-control" id="domicilioInvitado" placeholder="Ingrese domicilio">
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

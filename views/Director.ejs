@@ -9,37 +9,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
-    *{
-        font-family: "Inter", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 300;
-        font-style: normal;
+    * {
+      font-family: "Inter", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 300;
+      font-style: normal;
     }
-    .effect{
-        border: 1px solid rgb(93, 113, 150);
-        margin-right: 5px;
-        opacity: 0.8;
+    .effect {
+      opacity: 0.9;
     }
+    .navbarDashboard{
+        background: #0d6efd;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .container-fluid{
+        border: solid purple;
+        
+    }
+
+
+    .gato-orden{
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
 </style>
 <body>
 
 <!-- Encabezado -->
-<nav class="navbar navbar-dark bg-primary p-3">
-    <div class="container-fluid">
+<nav class="navbarDashboard">
         
         <%if(data.length > 1){%>
-            <h5  style="color: white;" >Hola ! <%=data_user.email%> &nbsp;</h5>
-            <div class="btn-group" role="group" aria-label="Opciones del Panel">
+            <div class="gato-orden" role="group" aria-label="Opciones del Panel">
                 
                 <% data.forEach(e =>{ %>
                     
                     <%if(currentRoute == "dir" && e=="conciliador"){%>
-                        <a href="/dashboard_con/<%= data_user.dni %>"><button type="button" class="btn btn-light text-primary fw-bold"   onclick="cambiarOpcion('<%=e%>')">
+                        <a href="/dashboard_con/<%= data_user.dni %>"><button type="button" class="btn btn-light fw-bold"   onclick="cambiarOpcion('<%=e%>')">
                             <%= e%>
                         </button></a>
                         &nbsp;
                     <%}if(currentRoute == "dir" && e=="director"){%>
-                        <button type="button" class="effect btn btn-light text-primary fw-bold"   onclick="cambiarOpcion('<%=e%>')">
+                        <button type="button" class="effect btn btn-dark fw-bold"   onclick="cambiarOpcion('<%=e%>')">
                             <%= e%>
                         </button>
                     <%}%>
@@ -48,18 +61,14 @@
         <%}else{%>
             <span class="navbar-brand mb-0 h1">Panel de Conciliador</span>
         <%}%>
-        <a href="/login" class="btn btn-danger">Cerrar Sesión</a>
-    </div>
+        <div>
+            <a href="/login" >
+                <button class="btn btn-danger">Cerrar Sesión</button>
+              </a>
+        </div>
+        
 </nav>
 
-<div class="container-fluid bg-primary">
-    <div class="d-flex justify-content-center">
-        <a href="#" class="nav-link text-white px-3 py-2">Inicio</a>
-        <a href="#" class="nav-link text-white px-3 py-2">Administrar Usuarios</a>
-        <a href="#" class="nav-link text-white px-3 py-2">Generar Esquela</a>
-        <a href="/GenerarInforme" class="nav-link text-white px-3 py-2">Generar Informes</a>
-    </div>
-</div>
 
 <!-- Resumen de Gestión -->
  

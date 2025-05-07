@@ -20,8 +20,6 @@ class SolicitudModel {
       });
     });
   }
-
-  // Crear una nueva solicitud
   // Crear una nueva solicitud
   async createSolicitud(data) {
     return new Promise((resolve, reject) => {
@@ -55,6 +53,24 @@ class SolicitudModel {
 
         // ✅ Esta línea es necesaria para que la promesa se resuelva
         resolve(results);
+      });
+    });
+  }
+  async obtenerExpediente() {
+    return new Promise((resolve, reject) => {
+      const query =
+        "SELECT ID_Expediente FROM solicitud ORDER BY ID_Expediente";
+      db.query(query, (error, results) => {
+        if (error) {
+          console.error("Error al obtener el último expediente:", error);
+          return reject("Error en la consulta");
+        }
+        if (results.length > 0) {
+          const ultimoID = results[0].ID_Expediente;
+          resolve(ultimoID);
+        } else {
+          resolve(null); // No hay registros
+        }
       });
     });
   }
@@ -114,6 +130,8 @@ class User {
       });
     });
   }
+  
+
 }
 
 module.exports = { User, SolicitudModel };

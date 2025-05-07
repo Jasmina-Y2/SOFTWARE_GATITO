@@ -130,8 +130,8 @@ class User {
       });
     });
   }
-  
 
+  // 
 }
 
 module.exports = { User, SolicitudModel };

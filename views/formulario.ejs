@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styleFor.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-content">
+            <form action="/generar-solicitud" method="POST" id="miFormulario">
+                <div >
+                    <h3>Datos Generales</h3>
+                    <div class="form-row">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" name="fecha">
+                    </div>
+                    <div class="form-row">
+                        <label for="nombre-solicitante">Nombre o razón social del solicitante(s)</label>
+                        <input type="text" id="nom_solicitante" name="nom_solicitante">
+                    </div>
+                    <div class="form-row">
+                        <label for="documento">Documento de identidad o RUC</label>
+                        <input type="text" id="dni_solicitante" name="dni_solicitante">
+                    </div>
+                    <div class="form-row">
+                        <label for="domicilio-solicitante">Domicilio del solicitante</label>
+                        <input type="text" id="dom_solicitante" name="dom_solicitante">
+                    </div>
+                    <div class="form-row">
+                        <label for="nombre-apoderado">Nombre del apoderado o representante</label>
+                        <input type="text" id="nom_apoderado" name="nom_apoderado">
+                    </div>
+                    <div class="form-row">
+                        <label for="domicilio-apoderado">Domicilio del apoderado</label>
+                        <input type="text" id="dom_apoderado" name="dom_apoderado">
+                    </div>
+                    <div class="form-row">
+                        <label for="nombre-invitado">Nombre o razón social del invitado(s)</label>
+                        <input type="text" id="nom_invitado" name="nom_invitado">
+                    </div>
+                    <div class="form-row">
+                        <label for="domicilio-invitado">Domicilio del invitado(s)</label>
+                        <input type="text" id="dom_invitado" name="dom_invitado">
+                    </div>
+                </div>
+        
+                <div class="form-section">
+                    <h3>Hechos que Dieron Lugar al Conflicto</h3>
+                    <div class="form-row">
+                        <label for="hechos">Describa los hechos</label>
+                        <textarea id="des_hechos" placeholder="Describa los hechos..." name="des_hechos"></textarea>
+                    </div>
+                </div>
+        
+                <div class="form-section">
+                    <h3>Otras Personas con Derecho Alimentario</h3>
+                    <div class="form-row">
+                        <label for="otras-personas">Detalles adicionales</label>
+                        <textarea id="detalles_adic" placeholder="Ingrese información adicional..." name="detalles_adic"></textarea>
+                    </div>
+                </div>
+        
+                <div class="form-section">
+                    <h3>Pretensión</h3>
+                    <div class="form-row">
+                        <label for="pretension">Pretensión</label>
+                        <textarea id="pretensiones" placeholder="Describa la pretensión..." name="pretensiones"></textarea>
+                    </div>
+                </div>
+        
+                <div class="buttons">
+                    <button type="submit" onclick="confirmarSolicitud()">Generar Solicitud</button>
+                    <button type="button" id="btnLimpiar">Limpiar</button>
+                </div>
+            </div>
+            
+    
+            </form>
+        </div>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        document.getElementById('btnLimpiar').addEventListener('click', () => { const formulario = document.getElementById('miFormulario');formulario.reset();});
+        function confirmarSolicitud() {alert("Solicitud guardada correctamente.");}
+    </script>
+</body>
+</html>

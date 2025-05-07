@@ -38,11 +38,14 @@ Router.post("/login", async (req, res) => {
     res.render("login", { error });
   }
 });
-Router.get("/dashboard/", (req, res) => {
+
+Router.get("/dashboard/", async(req, res) => {
   const data_user = req.flash("data_user")[0];
   const usuariosRoles = req.flash("data_roles");
   const ruta = req.flash("ruta");
 
+  const Expedientes = await solicitudModel.obtenerExpediente()
+  console.log("EXPEDIENTES: "+Expedientes)
   if (!data_user || !usuariosRoles) {
     req.flash("error", "Debes iniciar sesión primero.");
     return res.render("Error");
@@ -54,6 +57,9 @@ Router.get("/dashboard/", (req, res) => {
     data_user,
     currentRoute: ruta,
   });
+
+
+
 });
 Router.get("/GenerarInforme", (req, res) => {
   res.render("GenerarInforme.ejs");
@@ -167,5 +173,11 @@ Router.post("/generar-solicitud", async (req, res) => {
     res.status(500).send("Hubo un problema al procesar la solicitud.");
   }
 });
+
+
+
+
+
+
 
 module.exports = Router;

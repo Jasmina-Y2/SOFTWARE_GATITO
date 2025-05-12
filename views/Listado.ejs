@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Conciliador</title>
+    <link rel="stylesheet" href="styleLis.css"> <!-- Asegúrate de que la ruta del CSS sea correcta -->
+</head>
+<body>
+   
+
+    <div class="container">
+        <h1>Expedientes de Conciliación</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar Expediente">
+            <button>🔍</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Expediente</th>
+                    <th>Partes Involucradas</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Expediente 001</td>
+                    <td>Melanio Gato cat vs. Yazmin Llacua Mallma</td>
+                    <td>2024-11-05</td>
+                    <td class="action-buttons">
+                        <a href="/expediente/1" class="ver">Ver</a> <!-- Ejemplo para ver un expediente -->
+                        <a href="/acta" class="generar">Generar Acta</a> <!-- Ruta correcta para el formulario -->
+                    </td>
+                </tr>
+                <!-- Más filas -->
+            </tbody>
+        </table>
+    </div>
+    <script src="/js/script.js"></script> <!-- Ruta ejemplo para JavaScript -->
+</body>
+</html>

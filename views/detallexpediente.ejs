@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Expediente</title>
+    <link rel="stylesheet" href="/stylesLis.css">
+</head>
+<body>
+  
+    <div class="container">
+        <div class="top-section">
+            <h2>Casos de divorcio Nº 0012</h2>
+            <button class="btn-back" onclick="goBack()">Regresar</button>
+        </div>
+        <div class="section">
+            <p><span class="status"> Estado: Finalizado ✅</span></p>
+            <div class="details">
+                <div>
+                    <h3>Solicitante:</h3>
+                    <p>Nombre: Yazmin Llacua Mallma</p>
+                    <p>DNI: 76122408</p>
+                    <p>Fecha de creación: 12-13-2024</p>
+                </div>
+                <div>
+                    <h3>Cónyuge:</h3>
+                    <p>Nombre: Melanio Gato cat</p>
+                    <p>DNI: 76122409</p>
+                </div>
+                <div>
+                    <h3>Conciliador:</h3>
+                    <p>Nombre: Ashley Rojas</p>
+                    <p>DNI: 71234508</p>
+                    <p>Fecha de creación: 12-13-2024</p>
+                    <p>Hora: 7:45 am</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="attachments">
+            <h3>Archivos Adjuntos</h3>
+            <button onclick="uploadFile()">Subir un Archivo</button>
+            <div class="attachment-item">
+                <span>Solicitud.pdf</span>
+                <button class="delete-btn" onclick="deleteFile('Solicitud.pdf')">Eliminar</button>
+            </div>
+            <div class="attachment-item">
+                <span>Acuerdos.pdf</span>
+                <button class="delete-btn" onclick="deleteFile('Acuerdos.pdf')">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Conciliador</title>
+    <link rel="stylesheet" href="/style.css"> <!-- Asegúrate que esta ruta sea correcta -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Centro de Conciliación">
+        </div>
+        <h1>Panel de Conciliador</h1>
+        <button class="cerrar">Cerrar Sección</button>
+    </header>
+
+    <nav>
+        <a href="/" class="active">Inicio</a>
+        <a href="/listado" class="active">Módulo de Solicitud</a>
+        <a href="/listado" class="ac">Listado Expedientes</a>
+    </nav>
+
+    <div class="container">
+        <h1>Expedientes de Conciliación</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar Expediente">
+            <button>🔍</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Expediente</th>
+                    <th>Partes Involucradas</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (expedientes.length > 0) { %>
+                    <% expedientes.forEach(exp => { %>
+                        <tr>
+                            <td><%= exp.ID_Expediente %></td>
+                            <td><%= exp.nom_solicitante %></td>
+                            <td><%= exp.fecha %></td>
+                            <td class="action-buttons">
+                                <a href="/expediente/<%= exp.ID_Expediente %>" class="ver">Ver</a>
+                                <a href="/acta/<%= exp.id %>" class="generar">Generar Acta</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No hay expedientes disponibles.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

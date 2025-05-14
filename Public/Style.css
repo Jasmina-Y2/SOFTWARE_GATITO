@@ -1,0 +1,170 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+header h1 {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .cerrar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+nav a {
+    color:  #004080;
+    text-decoration: none;
+    padding: 10px 20px;
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav a.ac {
+    background-color: #ffffff;
+    color: #004080;
+}
+
+nav a.active {
+    background-color: #004080;
+    color: white;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #004080;
+}
+
+/* Container */
+.container {
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Subventana de Listado de Expedientes */
+.sub-ventana {
+    background-color: white;
+    color: #008cba; /* Letra color celeste */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #004080;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-buttons a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+
+
+
+.action-buttons a:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.action-buttons a.generar:hover {
+    background-color:#0056b3;
+}

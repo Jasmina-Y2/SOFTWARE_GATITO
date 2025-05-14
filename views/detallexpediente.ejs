@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Expediente</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Panel de Conciliador</h1>
+        <button class="cerrar" onclick="window.location.href='/'">Cerrar Sesión</button>
+    </header>
+
+    <nav>
+        <a href="/" class="active">Inicio</a>
+        <a href="/" class="active">Módulo de Solicitud</a>
+        <a href="/listado" class="ac">Listado Expedientes</a>
+    </nav>
+
+    <div class="container">
+        <div class="top-section">
+            <h2><%= expediente.asunto %> Nº <%= expediente.ID_Expendiente %></h2>
+            <button class="btn-back" onclick="history.back()">Regresar</button>
+        </div>
+
+        <div class="section">
+            <p><span class="status">Estado: <%= expediente.estado %></span></p>
+
+            <div class="details">
+                <div>
+                    <h3>Solicitante:</h3>
+                    <p>Nombre: <%= expediente.nom_solicitante %></p>
+                    <p>DNI: <%= expediente.dni_solicitante %></p>
+                    <p>Fecha de creación: <%= expediente.fecha %></p>
+                </div>
+                <div>
+                    <h3>Cónyuge:</h3>
+                    <p>Nombre: <%= expediente.nom_apoderado %></p>
+                    <p>DNI: <%= expediente.dom_apoderado %></p>
+                </div>
+                <div>
+                    <h3>Conciliador:</h3>
+                    <p>Nombre: <%= expediente.conciliador_nombre %></p>
+                    <p>DNI: <%= expediente.conciliador_dni %></p>
+                    <p>Fecha de creación: <%= expediente.fecha_creacion %></p>
+                    <p>Hora: <%= expediente.hora %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="attachments">
+            <h3>Archivos Adjuntos</h3>
+            <% if (expediente.archivos && expediente.archivos.length > 0) { %>
+                <% expediente.archivos.forEach(archivo => { %>
+                    <div class="attachment-item">
+                        <span><%= archivo.nombre %></span>
+                        <button class="delete-btn" onclick="deleteFile('<%= archivo.nombre %>')">Eliminar</button>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No hay archivos adjuntos.</p>
+            <% } %>
+            <button onclick="uploadFile()">Subir un Archivo</button>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

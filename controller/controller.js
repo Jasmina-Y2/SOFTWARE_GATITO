@@ -169,7 +169,7 @@ Router.post("/generar-solicitud", async (req, res) => {
     );
     res.send(docBuffer);
   } catch (error) {
-    console.error("Error en la solicitud:", error);
+    console.error("Error en la solicitud..:", error);
     res.status(500).send("Hubo un problema al procesar la solicitud.");
   }
 });
